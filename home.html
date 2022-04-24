@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="css/estilos.css">
+
+    <title>Organizador</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <script src="js/main.js"></script>
+
+</head>
+
+<body>
+    <script>
+        let UsuarioLog = localStorage.getItem("usuario");
+        console.log(UsuarioLog);
+        if (UsuarioLog == null) {
+            alert("Solo pueden ingresar usuarios logueados")
+            location.href = "/index.html";
+        }
+    </script>
+
+
+    <div class="HeaderPrincipal">
+        <div id="opcionesLogueado">
+            <ul>
+                <li><a href="/index.html">Inicio</a></li>
+                <li style="float:right"><a class="active" href="/index.html" onclick="logout()">Cerrar sesion</a></li>
+                <li style="float:right"><a id="nombreU" class="active" onclick="mostrarNombreUsuario()">Iniciar sesion</a></li>
+                <li style="float:right"><a class="active" href="/nuevoUsuario.html">Calendario</a></li>
+
+            </ul>
+        </div>
+    </div>
+
+
+    <div class="principal">
+        <div class="wrap">
+            <form class="formulario" action="">
+                <input type="text" id="tareaInput" placeholder="Agrega tu tarea">
+                <input type="button" class="boton" id="btn-agregar" value="Agregar Tarea">
+            </form>
+        </div>
+    </div>
+
+    <h1>Listado de tus tareas</h1>
+
+    <table>
+        <tr>
+            <th>Tarea</th>
+            <th>Estado</th>
+            <th>Fecha Limite</th>
+            <th>Importante</th>
+        </tr>
+    </table>
+    <strong id="CantTareas">Cantidad de tareas:</strong>
+
+</body>
+
+</html>
