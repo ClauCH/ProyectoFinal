@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link href="css/estilos.css" rel="stylesheet" type="text/css">
+    <title>Treas</title>
+    <script src="js/main.js"></script>
+</head>
+
+<body>
+    <script>
+        let UsuarioLog = localStorage.getItem("usuario");
+        console.log(UsuarioLog);
+        if (UsuarioLog == null) {
+            alert("Solo pueden ingresar usuarios logueados")
+            location.href = "/index.html";
+        }
+    </script>
+
+    <div class="HeaderPrincipal">
+        <div id="opcionesLogueado">
+            <ul>
+                <li><a href="/index.html">Inicio</a></li>
+                <li style="float:right"><a class="active" href="/nuevoUsuario.html">Cerrar sesion</a></li>
+                <li style="float:right"><a id="nombreU" class="active" onclick="mostrarNombreUsuario()">Iniciar sesion</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="cuerpo">
+        <div class="nueTarea">
+            <div class="form">
+
+                <div class="tab-content">
+                    <div id="signup">
+                        <h1>Nueva tarea </h1>
+
+                        <form action="/" method="post">
+
+                            <div class="control-group">
+                                <div class="field-wrap">
+                                    <label class="login-field-icon fui-user" for="login-name">Nombre de la tarea</label>
+                                    <input type="text" class="login-field" value="" id="NombreTarea">
+
+                                </div>
+                                <div class="field-wrap">
+                                    <label class="login-field-icon fui-user" for="login-name">Descripción</label>
+                                    <input type="text" class="login-field" value="" id="DescrpcionTarea">
+
+                                </div>
+                                <div class="field-wrap">
+                                    <label class="login-field-icon fui-user" for="login-name">Categoria</label>
+                                    <input type="text" class="login-field" value="" id="TipoTarea">
+
+                                </div>
+
+                                <div class="field-wrap">
+                                    <input type="text" class="login-field" value="" id="FechaTarea">
+                                    <label class="login-field-icon fui-user" for="login-name">Fecha limite</label>
+                                </div>
+                                <div class="field-wrap">
+                                    <input type="text" class="login-field" value="" id="EstadoTarea">
+                                    <label class="login-field-icon fui-user" for="login-name">Prioridad</label>
+                                </div>
+
+
+                                <button type="submit" class="btn btn-primary btn-large btn-block" />Crear Usuario</button>
+
+                        </form>
+
+                        </div>
+                    </div>
+                </div>
+
+
+</body>
+
+</html>
