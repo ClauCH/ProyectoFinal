@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link href="css/estilos.css" rel="stylesheet" type="text/css">
+    <title>Login</title>
+    <script src="js/main.js"></script>
+</head>
+
+<body>
+    <div class="HeaderPrincipal">
+        <ul>
+            <li><a href="/index.html">Inicio</a></li>
+            <li style="float:right"><a class="active" href="/nuevoUsuario.html">Crear Usuario</a></li>
+        </ul>
+    </div>
+    <div class="cuerpo">
+
+        <div class="login">
+            <div class="login-screen">
+                <div class="app-title">
+                    <h1>Inicio de sesion</h1>
+                </div>
+
+                <div class="login-form">
+                    <div class="control-group">
+                        <input type="text" class="login-field" value="" placeholder="Usuario" id="login-name">
+                        <label class="login-field-icon fui-user" for="login-name"></label>
+                    </div>
+
+                    <div class="control-group">
+                        <input type="password" class="login-field" value="" placeholder="Contraseña" id="login-pass">
+                        <label class="login-field-icon fui-lock" for="login-pass"></label>
+                    </div>
+
+                    <a class="btn btn-primary btn-large btn-block" onclick="login()">Ingresar</a>
+                    <a class="login-link" href="/nuevoUsuario.html">Olvidaste tu contaseña?</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
+</html>
