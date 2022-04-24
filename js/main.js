@@ -7,8 +7,8 @@ class usuario {
 }
 
 class Tarea {
-    constructor(nombre, descripcion, fechaLimite, estado, tipo, importante) {
-
+    constructor(id, nombre, descripcion, fechaLimite, estado, tipo, importante) {
+        this.id = id;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.fechaLimite = fechaLimite;
@@ -18,20 +18,45 @@ class Tarea {
     }
 
 
-    terminarUnaTarea() {
 
-        this.estado = "Finalizada";
-        return console.log(`Tarea:${this.nombre} se encuentra ${this.estado}`);
+}
+/*Creacion de arrays*/
 
-    }
+let usuario1 = new usuario("Clau12", "1234");
+const tareas = [];
+tareas.push(new Tarea(0, "Estudiar matematicas", "Estudiar modulo 1 y 2 de ecuaciones", new Date("20/04/2022"), "Pendiente", "Estudio", true));
+tareas.push(new Tarea(1, "Pintar las rejas", "Ver que no llueva", new Date("01/04/2022"), "Finalizada", "Tareas del hogar", false));
+tareas.push(new Tarea(2, "Estudiar biologia", "Descripcion objeto3", new Date("12/04/2022"), "Pendiente", "Estudio", true));
+let contadorID = 3;
+
+function ObtenerNuevaTarea() {
+    let ObtNombre = document.getElementById("NombreTarea");
+    let ObtDescripcion = document.getElementById("DescrpcionTarea");
+    let ObtFechaLimite = document.getElementById("FechaTarea");
+    let ObtEstado = document.getElementById("EstadoTarea");
+    let ObtTipo = document.getElementById("TipoTarea");
+    let ObtImportante = document.getElementById("ImportanteTarea");
+    return ObtNombre, ObtDescripcion, ObtFechaLimite, ObtEstado, ObtTipo, ObtImportante;
+}
+
+function crearUnaTarea() {
+    tareas.push(new Tarea(contadorID, ObtenerNuevaTarea()));
+}
+
+function FinalizarTodas(ValorABuscar, ValorAnterior, ValorNuevo) {
+
+    tareas.forEach(function(i) {
+        i[ValorABuscar] = i[ValorABuscar] == ValorAnterior ? ValorNuevo : i[ValorABuscar];
+    })
 
 }
 
-const tareas = [];
-tareas.push(new Tarea("Estudiar matematicas", "Estudiar modulo 1 y 2 de ecuaciones", new Date("20/04/2022"), "Pendiente", "Estudio", true));
-tareas.push(new Tarea("Pintar las rejas", "Ver que no llueva", new Date("01/04/2022"), "Finalizada", "Tareas del hogar", false));
-tareas.push(new Tarea("Estudiar biologia", "Descripcion objeto3", new Date("12/04/2022"), "Pendiente", "Estudio", true));
+function FinalizarUnaTarea(idTarea) {
 
+    const resultado = tareas.find((i) => i.id == idTarea);
+    resultado.estado = "Finalizada";
+
+}
 
 function listarTodaslastareas() {
     console.log(`${usuario1.usuario} se muestran todas tus tareas:`);
@@ -68,61 +93,79 @@ function cantidadDeTareas() {
     console.log(`Cantidad de tareas: ${tareas.length}`);
 }
 
-function agregarTarea() {
-    let nombre = prompt("Ingresa nombre de la tarea:");
-    let descripcion = prompt("Ingresa Descripcion:");
-    let fechaLimite = prompt("Ingresa fecha limite:");
-    let estado = prompt("Ingresa estado inicial de la tarea");
-    let tipo = prompt("Ingresa tipo:");
-    let importante = prompt("Ingresar importancia de la tarea (Y/N):");
 
-    if (importante == "Y") {
-        importante = true;
-    } else if (importante == "N") {
-        importante = false;
-    } else {
-        alert("No es una opcion valida")
-
+/*Funciones para usuarios*/
+function loginValidarCampos() {
+    let inputUsuario = document.getElementById("login-name").value;
+    let inputContrasena = document.getElementById("login-pass").value;
+    if (inputUsuario == "") {
+        alert("Debes ingresar usuario");
+        inputUsuario.focus();
+        return false;
     }
+    if (inputContrasena == "") {
+        alert("Debes ingresar Contraseña");
+        inputContrasena.focus();
+        return false;
+    };
+    return true
+}
 
-    switch (importante) {
-        case true:
-            tareas.push(new Tarea(nombre, descripcion, fechaLimite, estado, tipo, importante));
-            break;
-        case false:
-            tareas.push(new Tarea(nombre, descripcion, fechaLimite, estado, tipo, importante));
-            break;
-        default:
-            alert("No se puede crear la tarea");
+function login() {
+    let validacion = loginValidarCampos();
+    if (validacion) {
+        let inputUsuario = document.getElementById("login-name").value;
+        let inputContrasena = document.getElementById("login-pass").value;
+
+        if (usuario1.usuario == inputUsuario && usuario1.contraseña == inputContrasena) {
+            location.href = '/home.html';
+            //localStorage.setItem('usuarioLogueado', JSON.stringify(usuario1));
+            localStorage.setItem('usuario', inputUsuario)
+
+        } else {
+            alert("Usuario o contraseña incorrecta")
+        }
 
     }
 }
 
-let usuario1 = new usuario("Clau12", "1234");
+function logout() {
+    localStorage.clear()
+};
 
-let usuarioIngresado = prompt("Ingresa tu usuario:");
-let contrasenaIngresada = prompt("Ingresa tu contraseña:");
+function mostrarNombreUsuario() {
+    let nombreUsuario = document.getElementById("nombreU");
+    let nombreLC = localStorage.getItem("usuario");
+    console.log(nombreLC);
+    nombreUsuario.innerHTML = `<li style="float:right"><a class="active" id="nombreU" onload="mostrarNombreUsuario()">${nombreLC}</a></li>`;
 
-if (usuario1.usuario == usuarioIngresado && contrasenaIngresada == usuario1.contraseña) {
-    alert("Podes ingresar y por consola vas a poder ver el listado de tareas");
-    console.log(`Bienvenida:${usuario1.usuario}`);
-    listarTodaslastareas()
-    console.log(" ");
-    listarTareasFinalizadas();
-    console.log(" ");
-    listarTareasPendientes();
-    console.log(" ");
-    //finalizo la tarea 1
-    cantidadDeTareas();
+}
+/*Funciones Tareas*/
+Tarea.prototype.ponerEnTabla = function() {
 
-    var respuesta = confirm("Usted desea agregar una nueva tarea?")
-    if (respuesta)
-        agregarTarea();
-    else
-        alert("Usted no aceptó.");
+    const table = document.querySelector("table");
+    const tr = document.createElement("tr");
+    const td = document.createElement("td");
+    const txtNombre = document.createTextNode(this.nombre);
+    const txtEstado = document.createTextNode(this.estado);
+    const txtFecha = document.createTextNode(this.fechaLimite);
+    const txtImportante = document.createTextNode(this.importante);
+    const tdEstado = document.createElement("td");
+    const tdFecha = document.createElement("td");
+    const tdImportante = document.createElement("td");
+    td.appendChild(txtNombre);
+    tdEstado.appendChild(txtEstado);
+    tdImportante.appendChild(txtImportante);
+    tdFecha.appendChild(txtFecha)
+    tr.appendChild(td);
+    tr.appendChild(tdEstado);
+    tr.appendChild(tdFecha);
+    tr.appendChild(tdImportante);
+    table.appendChild(tr);
+}
 
-
-    listarTodaslastareas()
-} else {
-    alert("No podes ingresar a ver tus tareas");
+window.onload = function() {
+    for (let tarea of tareas) {
+        tarea.ponerEnTabla();
+    }
 }
