@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Calendario de google</title>
+    <meta charset="utf-8" />
+</head>
+
+<body>
+    <p>Calendario de google</p>
+
+    <!--Add buttons to initiate auth sequence and sign out-->
+    <button id="Autorizar" onclick="handleAuthClick()">Autorizar</button>
+    <button id="signout_button" onclick="handleSignoutClick()">Cerrar sesion en google</button>
+
+    <pre id="content" style="white-space: pre-wrap;"></pre>
+
+    <script type="text/javascript">
+        const CLIENT_ID = '802061372523-0ogvhk2utgq00mj3o7kvtvltnkr8af5j.apps.googleusercontent.com';
+        const API_KEY = 'AIzaSyDpqHFnKxMhF4YGP3Zv6APaHOzrlKsPvbs';
+        const DISCOVERY_DOC = 'https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest';
+        const SCOPES = 'https://www.googleapis.com/auth/calendar';
+
+        let tokenClient;
+        let gapiInited = false;
+        let gisInited = false;
+
+        function gapiLoaded() {
+            gapi.load('client', intializeGapiClient);
+        }
+
+        async function intializeGapiClient() {
+            await gapi.client.init({
+                apiKey: API_KEY,
+                discoveryDocs: [DISCOVERY_DOC],
+            });
+            gapiInited = true;
+            maybeEnableButtons();
+        }
+
+        function gisLoaded() {
+            tokenClient = google.accounts.oauth2.initTokenClient({
+                client_id: CLIENT_ID,
+                scope: SCOPES,
+                callback: '', // defined later
+            });
+            gisInited = true;
+            maybeEnableButtons();
+        }
+
+
+        function handleAuthClick() {
+            tokenClient.callback = async(resp) => {
+                if (resp.error !== undefined) {
+                    throw (resp);
+                }
+                document.getElementById('signout_button').style.visibility = 'visible';
+                document.getElementById('authorize_button').innerText = 'Refresh';
+                await listUpcomingEvents();
+            };
+
+            if (gapi.client.getToken() === null) {
+                tokenClient.requestAccessToken({
+                    prompt: 'consent'
+                });
+            } else {
+                on.
+                tokenClient.requestAccessToken({
+                    prompt: ''
+                });
+            }
+        }
+
+        function handleSignoutClick() {
+            const token = gapi.client.getToken();
+            if (token !== null) {
+                google.accounts.oauth2.revoke(token.access_token);
+                gapi.client.setToken('');
+                document.getElementById('content').innerText = '';
+                document.getElementById('authorize_button').innerText = 'Authorize';
+                document.getElementById('signout_button').style.visibility = 'hidden';
+            }
+        }
+    </script>
+    <script async defer src="https://apis.google.com/js/api.js" onload="gapiLoaded()"></script>
+    <script async defer src="https://accounts.google.com/gsi/client" onload="gisLoaded()"></script>
+</body>
+
+</html>
