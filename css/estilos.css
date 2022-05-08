@@ -1,213 +1,237 @@
-div.headerPrincipal {
-    background-color: #333;
-    color: white;
-    padding: 10px;
-    font-size: 40px;
-}
-
-div.container {
-    padding: 10px;
-}
-
-ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #333;
-}
-
-li {
-    float: left;
-}
-
-li a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-}
-
-li a:hover:not(.active) {
-    background-color: #111;
-}
-
-.active {
-    background-color: #F10264;
-}
-
-
-/*Login*/
-
-* {
-    box-sizing: border-box;
-}
-
-*:focus {
-    outline: none;
-}
-
-body {
-    font-family: Arial;
-}
-
-div.cuerpo {
-    background-color: #666666;
-    padding: 50px;
-}
-
-.login {
-    margin: 20px auto;
-    width: 300px;
-}
-
-.login-screen {
-    background-color: #FFF;
-    padding: 20px;
-    border-radius: 5px
-}
-
-.app-title {
-    text-align: center;
-    color: #000000;
-}
-
-.login-form {
-    text-align: center;
-}
-
-.control-group {
-    margin-bottom: 10px;
-}
-
-
-/*Nuevo Usuario*/
-
-.tab-content {
-    background-color: #FFF;
-    padding: 20px;
-    border-radius: 5px;
-    text-align: center;
-    margin-bottom: 10px;
-}
-
-.usuario {
-    margin: 20px auto;
-    width: 300px;
-}
-
-
-/*Tarea Nueva*/
-
-.nueTarea {
-    margin: 20px auto;
-    width: 400px;
-}
-
-.control-group {
-    background-color: #ECF0F1;
-    border: 2px solid transparent;
-    border-radius: 3px;
-    font-size: 16px;
-    font-weight: 200;
-    padding: 10px 0;
-    width: 250px;
-    transition: border .5s;
-}
-
-
-/*Textbox usuario y contraseña*/
-
-input {
-    text-align: center;
-    background-color: #ECF0F1;
-    border: 2px solid transparent;
-    border-radius: 3px;
-    font-size: 16px;
-    font-weight: 200;
-    padding: 10px 0;
-    width: 250px;
-    transition: border .5s;
-}
-
-input:focus {
-    border: 2px solid #000000;
-    box-shadow: none;
-}
-
-
-/*Boton Login*/
-
-.btn {
-    border: 2px solid transparent;
-    background: #F10264;
-    color: #ffffff;
-    font-size: 16px;
-    line-height: 25px;
-    padding: 10px 0;
-    text-decoration: none;
-    text-shadow: none;
-    border-radius: 3px;
-    box-shadow: none;
-    transition: 0.25s;
-    display: block;
-    width: 250px;
-    margin: 0 auto;
-}
-
-.btn:hover {
-    background-color: #5086c1;
-}
-
-
-/*Link Olvidate tu contraseña*/
-
-.login-link {
-    font-size: 12px;
-    color: #000000;
-    display: block;
-    margin-top: 12px;
-}
-
-table {
-    font-family: arial, sans-serif;
-    border-collapse: collapse;
-    width: 80%;
-    text-align: center;
-}
-
-td {
-    border: 1px solid #ccc;
-    text-align: left;
-    padding: 8px;
-}
-
-th {
-    border: 1px solid #ccc;
-    text-align: left;
-    padding: 8px;
-}
-
-tr:nth-child(even) {
-    background-color: #dddddd;
-}
-
-.tareas.lista {
-    list-style: none;
-}
-
-.tareas .lista li {
-    border-bottom: 1px solid #B6B6B6;
-}
-
-.tareas .lista li a {
-    color: #212121;
-    display: block;
-    padding: 20px 0;
-    text-decoration: none;
-}
-
-.tareas .lista li a:hover {
-    text-decoration: line-through;
-}
+    div.headerPrincipal {
+        background-color: #333;
+        color: white;
+        padding: 10px;
+        font-size: 40px;
+        height: auto;
+    }
+    
+    div.container {
+        padding: 10px;
+    }
+    
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #333;
+    }
+    
+    li {
+        float: left;
+    }
+    
+    li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+    }
+    
+    li a:hover:not(.active) {
+        background-color: #111;
+    }
+    
+    .active {
+        background-color: #F10264;
+    }
+    /*Login*/
+    
+    * {
+        box-sizing: border-box;
+    }
+    
+    *:focus {
+        outline: none;
+    }
+    
+    body {
+        font-family: Arial;
+    }
+    
+    div.cuerpo {
+        background-color: #c6c6c6;
+        padding: 50px;
+        height: 650px;
+        width: 100%;
+    }
+    
+    .login {
+        margin: 20px auto;
+        width: 300px;
+    }
+    
+    .login-screen {
+        background-color: #FFF;
+        padding: 20px;
+        border-radius: 5px
+    }
+    
+    .app-title {
+        text-align: center;
+        color: #000000;
+    }
+    
+    .login-form {
+        text-align: center;
+    }
+    
+    .control-group {
+        margin-bottom: 10px;
+    }
+    /*Nuevo Usuario*/
+    
+    .tab-content {
+        background-color: #FFF;
+        padding: 20px;
+        border-radius: 5px;
+        text-align: center;
+        margin-bottom: 10px;
+    }
+    
+    .usuario {
+        margin: 20px auto;
+        width: 300px;
+    }
+    /*Tarea Nueva*/
+    
+    .nueTarea {
+        margin: 20px auto;
+        width: 400px;
+    }
+    
+    .control-group {
+        background-color: #ECF0F1;
+        border: 2px solid transparent;
+        border-radius: 3px;
+        font-size: 16px;
+        font-weight: 200;
+        padding: 10px 0;
+        width: 250px;
+        transition: border .5s;
+    }
+    /*Textbox usuario y contraseña*/
+    
+    input {
+        text-align: center;
+        background-color: #ECF0F1;
+        border: 2px solid transparent;
+        border-radius: 3px;
+        font-size: 16px;
+        font-weight: 200;
+        padding: 10px 0;
+        width: 250px;
+        transition: border .5s;
+    }
+    
+    input:focus {
+        border: 2px solid #000000;
+        box-shadow: none;
+    }
+    /*Boton Login*/
+    
+    .btn {
+        border: 2px solid transparent;
+        background: #F10264;
+        color: #ffffff;
+        font-size: 16px;
+        line-height: 25px;
+        padding: 10px 0;
+        text-decoration: none;
+        text-shadow: none;
+        border-radius: 3px;
+        box-shadow: none;
+        transition: 0.25s;
+        display: block;
+        width: 250px;
+        margin: 0 auto;
+    }
+    
+    .btn:hover {
+        background-color: #a80146;
+    }
+    
+    .boton {
+        border: 2px solid transparent;
+        background: #F10264;
+        color: #ffffff;
+        font-size: 16px;
+        padding: 10px 0;
+        border-radius: 3px;
+        box-shadow: none;
+        transition: 0.25s;
+        display: block;
+        margin: 20px;
+        width: 250px;
+    }
+    
+    .boton:hover {
+        background-color: #a80146;
+    }
+    
+    button {
+        border: 2px solid transparent;
+        background: #F10264;
+        color: #ffffff;
+        font-size: 15px;
+        padding: 3px 0;
+        text-decoration: none;
+        text-shadow: none;
+        border-radius: 1px;
+        box-shadow: none;
+        transition: 0.25s;
+        display: inline;
+        margin: 10px;
+        width: 70px;
+    }
+    /*Link Olvidate tu contraseña*/
+    
+    .login-link {
+        font-size: 12px;
+        color: #000000;
+        display: block;
+        margin-top: 12px;
+    }
+    
+    table {
+        border-collapse: 2px solid #212121;
+        font-family: arial, sans-serif;
+        width: 80%;
+        text-align: center;
+    }
+    
+    td {
+        text-align: left;
+        padding: 8px;
+    }
+    
+    th {
+        text-align: left;
+        padding: 8px;
+    }
+    
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+    
+    .tareas.lista {
+        list-style: none;
+    }
+    
+    .tareas .lista li {
+        border-bottom: 1px solid #B6B6B6;
+    }
+    
+    .tareas .lista li a {
+        color: #212121;
+        display: block;
+        padding: 20px 0;
+        text-decoration: none;
+    }
+    
+    .tareas .lista li a:hover {
+        text-decoration: line-through;
+    }
+    /*Calendario*/
